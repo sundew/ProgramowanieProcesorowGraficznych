@@ -133,15 +133,15 @@ void SetupRC() {
 		fprintf(stderr, "error loading texture\n");
 	}
 
-	MVPMatrixLocation = GetUniformLocation(shader, "MVPMatrix");
-	textureLocation = GetUniformLocation(shader, "texture0");
-	lightPositionLocation = GetUniformLocation(shader, "lightPosition");
-	diffuseColorLocation = GetUniformLocation(shader, "diffuseColor");
-	ambientColorLocation = GetUniformLocation(shader, "ambientColor");
-	specularColorLocation = GetUniformLocation(shader, "specularColor");
-	MVMatrixLocation = GetUniformLocation(shader, "MVMatrix");
-	normalMatrixLocation = GetUniformLocation(shader, "normalMatrix");
-	alphaLocation=GetUniformLocation(shader, "alpha");
+	MVPMatrixLocation = glGetUniformLocation(shader, "MVPMatrix");
+	textureLocation = glGetUniformLocation(shader, "texture2D");
+	lightPositionLocation = glGetUniformLocation(shader, "lightPosition");
+	diffuseColorLocation = glGetUniformLocation(shader, "diffuseColor");
+	ambientColorLocation = glGetUniformLocation(shader, "ambientColor");
+	specularColorLocation = glGetUniformLocation(shader, "specularColor");
+	MVMatrixLocation = glGetUniformLocation(shader, "MVMatrix");
+	normalMatrixLocation = glGetUniformLocation(shader, "normalMatrix");
+	alphaLocation = glGetUniformLocation(shader, "alpha");
 
 	M3DVector3f eye = {3.0f, 3.0f, 20.0f};
 	M3DVector3f at = {0.0f, 0.0f, 0.0f};
@@ -341,6 +341,7 @@ int main(int argc, char * argv[]) {
 	glutCreateWindow("Triangle");
 	glutReshapeFunc(ChangeSize);
 	glutDisplayFunc(RenderScene);
+	glutIdleFunc(RenderScene);
 
 	GLenum err = glewInit();
 	if (GLEW_OK != err) {

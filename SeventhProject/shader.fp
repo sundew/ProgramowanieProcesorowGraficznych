@@ -12,7 +12,7 @@ smooth in vec3 varyingNormal;
 smooth in vec3 varyingLightDirection;
 smooth in vec3 varyingPosition;
 
-uniform sampler2D texture0;
+uniform sampler2D texture2D;
 
 
 void main() {
@@ -25,6 +25,6 @@ void main() {
 		float fSpec=pow(spec,100.0);
 		vFragColor.rgb+=vec3(specularColor)*vec3(fSpec,fSpec,fSpec);
 	}
-	vFragColor *= vec4(vec3(texture(texture0, varyingTexCoord)),alpha);
+	vFragColor *= vec4(vec3(texture(texture2D, varyingTexCoord)),alpha);
 }
  
